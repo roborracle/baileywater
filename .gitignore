@@ -1,0 +1,19 @@
+# Source assets (not deployed)
+Website/
+Website-20260211T150734Z-1-001.zip
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+
+# MCP config
+.mcp.json
+
+# Environment
+.env
+.env.local
