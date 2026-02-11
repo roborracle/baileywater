@@ -4,18 +4,7 @@
    whitespace, bold use of blues.
    ============================================================ */
 
-/* --- @font-face: Gotham ---
-   Drop .woff2 files into fonts/ and uncomment the declarations
-   below. Until then, Montserrat loads from Google Fonts as a
-   visual stand-in.
-
-@font-face {
-  font-family: 'Gotham';
-  src: url('../fonts/Gotham-Thin.woff2') format('woff2');
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
-}
+/* --- @font-face: Gotham --- */
 @font-face {
   font-family: 'Gotham';
   src: url('../fonts/Gotham-Light.woff2') format('woff2');
@@ -32,26 +21,11 @@
 }
 @font-face {
   font-family: 'Gotham';
-  src: url('../fonts/Gotham-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Gotham';
   src: url('../fonts/Gotham-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
-@font-face {
-  font-family: 'Gotham';
-  src: url('../fonts/Gotham-Black.woff2') format('woff2');
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
---- end Gotham @font-face --- */
 
 
 /* =========================
@@ -75,12 +49,12 @@
 
   /* Typography */
   --font-family:       'Gotham', 'Montserrat', sans-serif;
-  --font-weight-thin:  100;
+  --font-weight-thin:  300;
   --font-weight-light: 300;
   --font-weight-book:  400;
-  --font-weight-medium:500;
+  --font-weight-medium:700;
   --font-weight-bold:  700;
-  --font-weight-black: 900;
+  --font-weight-black: 700;
 
   /* Type scale (fluid where useful) */
   --text-xs:    0.75rem;
