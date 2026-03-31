@@ -46,4 +46,70 @@ document.addEventListener('DOMContentLoaded', () => {
       header.classList.toggle('scrolled', window.scrollY > 50);
     }, { passive: true });
   }
+
+  /* Tabbed navigation */
+  const tabContainer = document.querySelector('.bwi-tabs');
+  if (tabContainer) {
+    const tabs = Array.from(tabContainer.querySelectorAll('.bwi-tabs__tab'));
+    const panels = Array.from(tabContainer.querySelectorAll('.bwi-tabs__panel'));
+    const accordionTriggers = Array.from(tabContainer.querySelectorAll('.bwi-tabs__accordion-trigger'));
+    const mobileQuery = window.matchMedia('(max-width: 768px)');
+
+    function activateTab(index) {
+      tabs.forEach((tab, i) => {
+        const isActive = i === index;
+        tab.setAttribute('aria-selected', String(isActive));
+        tab.setAttribute('tabindex', isActive ? '0' : '-1');
+      });
+      panels.forEach((panel, i) => {
+        const isActive = i === index;
+        panel.classList.toggle('is-active', isActive);
+        panel.setAttribute('aria-hidden', String(!isActive));
+      });
+      accordionTriggers.forEach((trigger, i) => {
+        trigger.setAttribute('aria-expanded', String(i === index));
+      });
+    }
+
+    function toggleAccordion(index) {
+      const panel = panels[index];
+      const isOpen = panel.classList.contains('is-active');
+      panels.forEach((p, i) => {
+        p.classList.remove('is-active');
+        p.setAttribute('aria-hidden', 'true');
+        accordionTriggers[i].setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        panel.classList.add('is-active');
+        panel.setAttribute('aria-hidden', 'false');
+        accordionTriggers[index].setAttribute('aria-expanded', 'true');
+      }
+      tabs.forEach((tab, i) => {
+        const isActive = !isOpen && i === index;
+        tab.setAttribute('aria-selected', String(isActive));
+        tab.setAttribute('tabindex', isActive ? '0' : '-1');
+      });
+    }
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => activateTab(i));
+      tab.addEventListener('keydown', (e) => {
+        let target = i;
+        if (e.key === 'ArrowRight') target = (i + 1) % tabs.length;
+        else if (e.key === 'ArrowLeft') target = (i - 1 + tabs.length) % tabs.length;
+        else if (e.key === 'Home') target = 0;
+        else if (e.key === 'End') target = tabs.length - 1;
+        else return;
+        e.preventDefault();
+        tabs[target].focus();
+        activateTab(target);
+      });
+    });
+
+    accordionTriggers.forEach((trigger, i) => {
+      trigger.addEventListener('click', () => toggleAccordion(i));
+    });
+
+    activateTab(0);
+  }
 });

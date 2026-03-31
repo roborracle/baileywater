@@ -1325,7 +1325,201 @@ p {
 
 
 /* =========================
-   20. Print
+   20. Tabbed Navigation
+   ========================= */
+
+.bwi-tabs {
+  margin-top: var(--space-lg);
+}
+
+.bwi-tabs__list {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid rgba(1, 95, 141, 0.15);
+}
+
+.bwi-tabs__list li {
+  flex: 1;
+}
+
+.bwi-tabs__tab {
+  display: block;
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  font-family: var(--font-family);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(26, 25, 30, 0.55);
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  transition: color var(--duration) var(--ease),
+              border-color var(--duration) var(--ease),
+              background-color var(--duration) var(--ease);
+  text-align: center;
+  margin-bottom: -2px;
+}
+
+.bwi-tabs__tab:hover {
+  color: var(--color-blue-deep);
+  background-color: rgba(109, 168, 194, 0.08);
+}
+
+.bwi-tabs__tab[aria-selected="true"] {
+  color: var(--color-blue-deep);
+  border-bottom-color: var(--color-blue-deep);
+}
+
+.bwi-tabs__panels {
+  padding-top: var(--space-lg);
+}
+
+.bwi-tabs__panel {
+  display: none;
+}
+
+.bwi-tabs__panel.is-active {
+  display: block;
+}
+
+.bwi-tabs__accordion-trigger {
+  display: none;
+}
+
+.bwi-tabs__subnav {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-sm);
+}
+
+.bwi-tabs__subnav > li {
+  background-color: var(--color-white);
+  border-radius: var(--border-radius);
+  border-left: 3px solid var(--color-blue-deep);
+  transition: transform var(--duration) var(--ease),
+              box-shadow var(--duration) var(--ease);
+}
+
+.bwi-tabs__subnav > li:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 16px rgba(26, 25, 30, 0.08);
+}
+
+.bwi-tabs__subnav > li > a {
+  display: block;
+  padding: var(--space-md);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--text-base);
+  color: var(--color-blue-deep);
+}
+
+.bwi-tabs__subnav > li > a:hover {
+  color: var(--color-blue-light);
+}
+
+.bwi-tabs__subnav--nested {
+  padding: 0 var(--space-md) var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.bwi-tabs__subnav--nested li {
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--color-blue-light);
+}
+
+.bwi-tabs__subnav--nested a {
+  display: block;
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--text-sm);
+  color: rgba(26, 25, 30, 0.7);
+  transition: color var(--duration) var(--ease);
+}
+
+.bwi-tabs__subnav--nested a:hover {
+  color: var(--color-blue-deep);
+}
+
+/* Accordion triggers — mobile only */
+@media (max-width: 768px) {
+  .bwi-tabs__list {
+    display: none;
+  }
+
+  .bwi-tabs__panels {
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .bwi-tabs__panel {
+    display: block;
+    border-bottom: 1px solid rgba(1, 95, 141, 0.1);
+  }
+
+  .bwi-tabs__panel > .bwi-tabs__subnav {
+    display: none;
+    padding: var(--space-sm) var(--space-md) var(--space-md);
+    grid-template-columns: 1fr;
+  }
+
+  .bwi-tabs__panel.is-active > .bwi-tabs__subnav {
+    display: grid;
+  }
+
+  .bwi-tabs__accordion-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: var(--space-md);
+    font-family: var(--font-family);
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-blue-deep);
+    background: var(--color-white);
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--duration) var(--ease);
+    text-align: left;
+  }
+
+  .bwi-tabs__accordion-trigger:hover {
+    background-color: rgba(109, 168, 194, 0.08);
+  }
+
+  .bwi-tabs__accordion-trigger::after {
+    content: '+';
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-light);
+    color: var(--color-blue-light);
+    transition: transform var(--duration) var(--ease);
+  }
+
+  .bwi-tabs__accordion-trigger[aria-expanded="true"]::after {
+    content: '\2212';
+  }
+
+  .bwi-tabs__subnav > li {
+    border-left-width: 2px;
+  }
+
+  .bwi-tabs__subnav > li > a {
+    padding: var(--space-sm) var(--space-md);
+    font-size: var(--text-sm);
+  }
+}
+
+
+/* =========================
+   21. Print
    ========================= */
 
 @media print {
