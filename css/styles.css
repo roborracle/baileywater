@@ -540,11 +540,12 @@ p {
 
 .stat-block__number {
   display: block;
-  font-size: var(--text-hero);
+  font-size: var(--text-5xl);
   font-weight: var(--font-weight-bold);
   color: var(--color-blue-deep);
   line-height: 1.1;
   margin-bottom: var(--space-sm);
+  white-space: nowrap;
 }
 
 .stat-block__text {
