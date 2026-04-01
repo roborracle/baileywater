@@ -53,8 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const tabs = Array.from(tabContainer.querySelectorAll('.bwi-tabs__tab'));
     const panels = Array.from(tabContainer.querySelectorAll('.bwi-tabs__panel'));
     const accordionTriggers = Array.from(tabContainer.querySelectorAll('.bwi-tabs__accordion-trigger'));
-    const mobileQuery = window.matchMedia('(max-width: 768px)');
-
     function activateTab(index) {
       tabs.forEach((tab, i) => {
         const isActive = i === index;
@@ -99,10 +97,14 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (e.key === 'ArrowLeft') target = (i - 1 + tabs.length) % tabs.length;
         else if (e.key === 'Home') target = 0;
         else if (e.key === 'End') target = tabs.length - 1;
+        else if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          activateTab(i);
+          return;
+        }
         else return;
         e.preventDefault();
         tabs[target].focus();
-        activateTab(target);
       });
     });
 

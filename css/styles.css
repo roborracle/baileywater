@@ -488,61 +488,6 @@ p {
   margin-top: var(--space-lg);
 }
 
-.video-placeholder {
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%; /* 16:9 */
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  border: 2px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(4px);
-}
-
-.video-placeholder__inner {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-sm);
-}
-
-.video-placeholder__play {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.2);
-  border: 2px solid rgba(255, 255, 255, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color var(--duration) var(--ease),
-              transform var(--duration) var(--ease);
-}
-
-.video-placeholder__play:hover {
-  background-color: rgba(255, 255, 255, 0.35);
-  transform: scale(1.08);
-}
-
-.video-placeholder__play svg {
-  width: 28px;
-  height: 28px;
-  fill: var(--color-white);
-  margin-left: 4px;
-}
-
-.video-placeholder__label {
-  font-size: var(--text-sm);
-  font-weight: var(--font-weight-medium);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.8);
-}
-
-
 /* =========================
    7b. Video Embed
    ========================= */
